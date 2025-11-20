@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7e605943814a37af0d780d927491af, type: 3}
+  m_Name: Level_01_Bricks
+  m_EditorClassIdentifier: 
+  _rows: 6
+  _columns: 10
+  _cellSize: {x: 0.6, y: 0.3}
+  _gridOffsetFromCenter: {x: 0, y: 2}
+  _indestructibleBrickConfig: {fileID: 11400000, guid: 65f88a8ff2628b74b81185c4fce1fe59, type: 2}
+  _normalBrickConfig: {fileID: 11400000, guid: 12680b24203280d429f7365ce9df37a8, type: 2}
+  _strongBrickConfig: {fileID: 11400000, guid: 7f1b1c8c504a293438072fe516fb70ae, type: 2}
+  _layoutMode: 1
+  _indestructibleBrickPositions:
+  - _rowIndex: 6
+    _columnIndex: 8
+  - _rowIndex: 2
+    _columnIndex: 10
+  - _rowIndex: 5
+    _columnIndex: 9
+  - _rowIndex: 1
+    _columnIndex: 6
+  - _rowIndex: 1
+    _columnIndex: 4
+  - _rowIndex: 6
+    _columnIndex: 4
+  - _rowIndex: 3
+    _columnIndex: 7
+  - _rowIndex: 4
+    _columnIndex: 2
+  - _rowIndex: 6
+    _columnIndex: 10
+  - _rowIndex: 3
+    _columnIndex: 1
+  _normalBrickPositions:
+  - _rowIndex: 5
+    _columnIndex: 2
+  - _rowIndex: 6
+    _columnIndex: 9
+  - _rowIndex: 4
+    _columnIndex: 10
+  - _rowIndex: 6
+    _columnIndex: 5
+  - _rowIndex: 1
+    _columnIndex: 8
+  - _rowIndex: 1
+    _columnIndex: 7
+  - _rowIndex: 4
+    _columnIndex: 6
+  - _rowIndex: 3
+    _columnIndex: 8
+  - _rowIndex: 6
+    _columnIndex: 7
+  - _rowIndex: 1
+    _columnIndex: 5
+  - _rowIndex: 5
+    _columnIndex: 10
+  - _rowIndex: 2
+    _columnIndex: 5
+  - _rowIndex: 3
+    _columnIndex: 10
+  - _rowIndex: 6
+    _columnIndex: 2
+  - _rowIndex: 6
+    _columnIndex: 1
+  - _rowIndex: 2
+    _columnIndex: 6
+  - _rowIndex: 4
+    _columnIndex: 8
+  - _rowIndex: 4
+    _columnIndex: 3
+  - _rowIndex: 1
+    _columnIndex: 1
+  - _rowIndex: 3
+    _columnIndex: 6
+  - _rowIndex: 2
+    _columnIndex: 2
+  - _rowIndex: 3
+    _columnIndex: 9
+  - _rowIndex: 5
+    _columnIndex: 6
+  - _rowIndex: 2
+    _columnIndex: 9
+  - _rowIndex: 1
+    _columnIndex: 3
+  - _rowIndex: 3
+    _columnIndex: 3
+  - _rowIndex: 2
+    _columnIndex: 3
+  - _rowIndex: 2
+    _columnIndex: 8
+  - _rowIndex: 1
+    _columnIndex: 10
+  _strongBrickPositions:
+  - _rowIndex: 4
+    _columnIndex: 4
+  - _rowIndex: 5
+    _columnIndex: 1
+  - _rowIndex: 4
+    _columnIndex: 1
+  - _rowIndex: 2
+    _columnIndex: 4
+  - _rowIndex: 2
+    _columnIndex: 1
+  - _rowIndex: 5
+    _columnIndex: 4
+  - _rowIndex: 5
+    _columnIndex: 7
+  - _rowIndex: 5
+    _columnIndex: 5
+  - _rowIndex: 5
+    _columnIndex: 8
+  - _rowIndex: 6
+    _columnIndex: 3
+  - _rowIndex: 3
+    _columnIndex: 4
+  - _rowIndex: 1
+    _columnIndex: 9
+  - _rowIndex: 4
+    _columnIndex: 5
+  - _rowIndex: 4
+    _columnIndex: 7
+  - _rowIndex: 2
+    _columnIndex: 7
+  - _rowIndex: 1
+    _columnIndex: 2
+  - _rowIndex: 4
+    _columnIndex: 9
+  - _rowIndex: 3
+    _columnIndex: 2
+  - _rowIndex: 3
+    _columnIndex: 5
+  - _rowIndex: 5
+    _columnIndex: 3
+  - _rowIndex: 6
+    _columnIndex: 6
+  _randomIndestructibleCount: 10
+  _randomNormalCount: 29
+  _randomStrongCount: 21
+  _randomSeed: 0

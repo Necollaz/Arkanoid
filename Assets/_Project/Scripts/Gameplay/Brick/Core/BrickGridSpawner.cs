@@ -7,30 +7,34 @@ namespace MiniIT.ARKANOID
         private const float                                 ROW_DIRECTION = -1.0f;
         private const float                                 HALF_MULTIPLIER = 0.5f;
 
-        private readonly LevelBricksConfig                  _config;
-        private readonly GameSession                        _gameSession;
-        private readonly GameplayAudio                      _gameplayAudio;
-        private readonly ObjectPool<BrickView>              _brickPool;
-        private readonly ObjectPool<BrickDestroyEffectView> _effectPool;
-        private readonly Transform                          _parentTransform;
+        private readonly LevelBricksConfig                  config;
+        private readonly GameSession                        gameSession;
+        private readonly GameplayAudio                      gameplayAudio;
+        private readonly ObjectPool<BrickView>              brickPool;
+        private readonly ObjectPool<BrickDestroyEffectView> effectPool;
+        private readonly Transform                          parentTransform;
 
-        public BrickGridSpawner(LevelBricksConfig config, ObjectPool<BrickView> brickPool,
-            ObjectPool<BrickDestroyEffectView> effectPool, Transform parentTransform, GameSession gameSession,
+        public BrickGridSpawner(
+            LevelBricksConfig config,
+            ObjectPool<BrickView> brickPool,
+            ObjectPool<BrickDestroyEffectView> effectPool,
+            Transform parentTransform,
+            GameSession gameSession,
             GameplayAudio gameplayAudio)
         {
-            _config = config;
-            _brickPool = brickPool;
-            _effectPool = effectPool;
-            _parentTransform = parentTransform;
-            _gameSession = gameSession;
-            _gameplayAudio = gameplayAudio;
+            this.config = config;
+            this.brickPool = brickPool;
+            this.effectPool = effectPool;
+            this.parentTransform = parentTransform;
+            this.gameSession = gameSession;
+            this.gameplayAudio = gameplayAudio;
         }
 
         public void SpawnBricks()
         {
-            _gameSession.Reset();
+            gameSession.Reset();
 
-            foreach (BrickCell brickCell in _config.EnumerateBrickCells())
+            foreach (BrickCell brickCell in config.EnumerateBrickCells())
             {
                 BrickConfig brickConfig = brickCell.BrickConfig;
 
@@ -39,7 +43,7 @@ namespace MiniIT.ARKANOID
                     continue;
                 }
 
-                _gameSession.RegisterBrick(brickConfig);
+                gameSession.RegisterBrick(brickConfig);
 
                 SpawnBrick(brickCell);
             }
@@ -52,21 +56,26 @@ namespace MiniIT.ARKANOID
                 return;
             }
 
-            BrickView brick = _brickPool.Get();
+            BrickView brick = brickPool.Get();
             Transform brickTransform = brick.transform;
 
-            brickTransform.SetParent(_parentTransform, false);
+            brickTransform.SetParent(parentTransform, false);
             brickTransform.localPosition = ComputeLocalPosition(brickCell);
 
-            brick.Initialize(brickCell.BrickConfig, _brickPool, _effectPool, _gameSession, _gameplayAudio,
-                _config.CellSize);
+            brick.Initialize(
+                brickCell.BrickConfig,
+                brickPool,
+                effectPool,
+                gameSession,
+                gameplayAudio,
+                config.CellSize);
             brick.gameObject.SetActive(true);
         }
 
         private Vector3 ComputeLocalPosition(BrickCell brickCell)
         {
             Vector2 origin = ComputeGridOrigin();
-            Vector2 cellSize = _config.CellSize;
+            Vector2 cellSize = config.CellSize;
 
             float x = origin.x + brickCell.ColumnIndex * cellSize.x;
             float y = origin.y + brickCell.RowIndex * cellSize.y * ROW_DIRECTION;
@@ -76,9 +85,9 @@ namespace MiniIT.ARKANOID
 
         private Vector2 ComputeGridOrigin()
         {
-            Vector2 cellSize = _config.CellSize;
-            int rows = _config.Rows;
-            int columns = _config.Columns;
+            Vector2 cellSize = config.CellSize;
+            int rows = config.Rows;
+            int columns = config.Columns;
 
             float totalWidth = (columns - 1) * cellSize.x;
             float totalHeight = (rows - 1) * cellSize.y;
@@ -88,7 +97,7 @@ namespace MiniIT.ARKANOID
 
             Vector2 centeredOrigin = new Vector2(originX, originY);
 
-            return centeredOrigin + _config.GridOffsetFromCenter;
+            return centeredOrigin + config.GridOffsetFromCenter;
         }
     }
 }

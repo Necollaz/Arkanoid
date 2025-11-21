@@ -11,8 +11,8 @@ public class BrickPositionListFiller
             list.InsertArrayElementAtIndex(list.arraySize);
             SerializedProperty element = list.GetArrayElementAtIndex(list.arraySize - 1);
 
-            SerializedProperty rowProp = element.FindPropertyRelative("_rowIndex");
-            SerializedProperty colProp = element.FindPropertyRelative("_columnIndex");
+            SerializedProperty rowProp = element.FindPropertyRelative("rowIndex");
+            SerializedProperty colProp = element.FindPropertyRelative("columnIndex");
 
             BrickCellPosition pos = source[index];
             rowProp.intValue = pos.RowIndexInspector;

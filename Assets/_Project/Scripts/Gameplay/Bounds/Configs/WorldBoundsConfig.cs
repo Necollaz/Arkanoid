@@ -6,16 +6,16 @@ namespace MiniIT.ARKANOID
     public class WorldBoundsConfig : ScriptableObject
     {
         [Header("Extra size (percent of canvas)")]
-        [SerializeField, Min(0.0f)] private float _horizontalExtraPercent = 0.1f;
-        [SerializeField, Min(0.0f)] private float _verticalExtraPercent = 0.1f;
+        [SerializeField, Min(0.0f)] private float horizontalExtraPercent = 0.065f;
+        [SerializeField, Min(0.0f)] private float verticalExtraPercent = 0.1f;
 
         [Header("Wall thickness (UI units)")]
-        [SerializeField, Min(1.0f)] private float _horizontalWallThickness = 1.0f;
-        [SerializeField, Min(1.0f)] private float _verticalWallThickness = 1.0f;
+        [SerializeField, Min(1.0f)] private float horizontalWallThickness = 1.0f;
+        [SerializeField, Min(1.0f)] private float verticalWallThickness = 1.0f;
 
-        public float HorizontalExtraPercent => _horizontalExtraPercent;
-        public float VerticalExtraPercent => _verticalExtraPercent;
-        public float HorizontalWallThickness => _horizontalWallThickness;
-        public float VerticalWallThickness => _verticalWallThickness;
+        public float HorizontalExtraPercent => horizontalExtraPercent;
+        public float VerticalExtraPercent => verticalExtraPercent;
+        public float HorizontalWallThickness => horizontalWallThickness;
+        public float VerticalWallThickness => verticalWallThickness;
     }
 }

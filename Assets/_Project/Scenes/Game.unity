@@ -609,31 +609,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30b89d662af42a3b887ed90013eae81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 519420031}
-  _topWall: {fileID: 1705729231}
-  _bottomWall: {fileID: 1844505470}
-  _leftWall: {fileID: 95127289}
-  _rightWall: {fileID: 1046061808}
-  _worldBoundsConfig: {fileID: 11400000, guid: 109f43d435b48db47b2fcc3bddfcbddd, type: 2}
-  _platformConfig: {fileID: 11400000, guid: 370c0a63a743369468a88e8e56893ada, type: 2}
-  _movementPlatformSlider: {fileID: 1010931787}
-  _ballConfig: {fileID: 11400000, guid: a788ca3914cb5a448859a06697390776, type: 2}
-  _bottomLoseTrigger: {fileID: 1844505471}
-  _ballSpawnPoint: {fileID: 1607127614}
-  _levelBricksConfig: {fileID: 11400000, guid: cf877a82f71c8c040a068119a9c1e201, type: 2}
-  _brickPrefab: {fileID: 8300754708914558400, guid: 0eee334ce89cd3a4480c62343edac87b, type: 3}
-  _brickInitialPoolSize: 40
-  _brickDestroyEffectPrefab: {fileID: 3748554718820173681, guid: e1d1111946299423ab8d64e1da457d45, type: 3}
-  _brickDestroyEffectInitialPoolSize: 20
-  _scoreText: {fileID: 971298047}
-  _winWindow: {fileID: 1507909007}
-  _winScoreText: {fileID: 121906667}
-  _winRepeatButton: {fileID: 2069019117}
-  _loseWindow: {fileID: 1456325265}
-  _loseScoreText: {fileID: 728754055}
-  _loseRestartButton: {fileID: 1123002179}
-  _gameplayAudioConfig: {fileID: 11400000, guid: d7ecf81441a8bd8429e0d041c30afc0b, type: 2}
-  _sfxAudioSource: {fileID: 318080699}
+  mainCamera: {fileID: 519420031}
+  topWall: {fileID: 1705729231}
+  bottomWall: {fileID: 1844505470}
+  leftWall: {fileID: 95127289}
+  rightWall: {fileID: 1046061808}
+  worldBoundsConfig: {fileID: 11400000, guid: 109f43d435b48db47b2fcc3bddfcbddd, type: 2}
+  platformConfig: {fileID: 11400000, guid: 370c0a63a743369468a88e8e56893ada, type: 2}
+  movementPlatformSlider: {fileID: 1010931787}
+  ballConfig: {fileID: 11400000, guid: a788ca3914cb5a448859a06697390776, type: 2}
+  bottomLoseTrigger: {fileID: 1844505471}
+  ballSpawnPoint: {fileID: 1607127614}
+  levelBricksConfig: {fileID: 11400000, guid: cf877a82f71c8c040a068119a9c1e201, type: 2}
+  brickPrefab: {fileID: 8300754708914558400, guid: 0eee334ce89cd3a4480c62343edac87b, type: 3}
+  brickInitialPoolSize: 40
+  brickDestroyEffectPrefab: {fileID: 3748554718820173681, guid: e1d1111946299423ab8d64e1da457d45, type: 3}
+  brickDestroyEffectInitialPoolSize: 20
+  scoreText: {fileID: 971298047}
+  winWindow: {fileID: 1507909007}
+  winScoreText: {fileID: 121906667}
+  winRepeatButton: {fileID: 2069019117}
+  loseWindow: {fileID: 1456325265}
+  loseScoreText: {fileID: 728754055}
+  loseRestartButton: {fileID: 1123002179}
+  gameplayAudioConfig: {fileID: 11400000, guid: d7ecf81441a8bd8429e0d041c30afc0b, type: 2}
+  sfxAudioSource: {fileID: 318080699}
 --- !u!1 &245164016
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,28 +5,28 @@ namespace MiniIT.ARKANOID
 {
     public class GameHudView : MonoBehaviour
     {
-        private GameHudPresenter _presenter;
+        private GameHudPresenter presenter;
 
         [Inject]
         private void Construct(GameSession gameSession, GameHudUiReferences ui, GameplayAudio gameplayAudio)
         {
             GameHudAnimator animator = new GameHudAnimator();
-            _presenter = new GameHudPresenter(gameSession, ui, gameplayAudio, animator);
+            presenter = new GameHudPresenter(gameSession, ui, gameplayAudio, animator);
         }
 
         private void Awake()
         {
-            _presenter.Initialize();
+            presenter.Initialize();
         }
 
         private void OnEnable()
         {
-            _presenter.Subscribe();
+            presenter.Subscribe();
         }
 
         private void OnDisable()
         {
-            _presenter.Unsubscribe();
+            presenter.Unsubscribe();
         }
     }
 }

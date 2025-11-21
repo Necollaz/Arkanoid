@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee69afbb6ace45279f25bf2c5c1a7fb1, type: 3}
   m_Name: GameplayAudioConfig
   m_EditorClassIdentifier: 
-  _ballHitBrickClip: {fileID: 8300000, guid: b402fd6e548a9483b8561f35bf606ff8, type: 3}
-  _ballHitWallOrPlatformClip: {fileID: 8300000, guid: fb60bddf9f3504c5f9a3fb24114205c3, type: 3}
-  _brickDestroyedClip: {fileID: 8300000, guid: db9538e46022943ec9f53de0d6c58495, type: 3}
-  _winMenuClip: {fileID: 8300000, guid: e44b833d1a6c040b481b0bc339388d86, type: 3}
-  _loseMenuClip: {fileID: 8300000, guid: 0c26951396cc743c8b2bd93b70dfee01, type: 3}
+  ballHitBrickClip: {fileID: 8300000, guid: b402fd6e548a9483b8561f35bf606ff8, type: 3}
+  ballHitWallOrPlatformClip: {fileID: 8300000, guid: fb60bddf9f3504c5f9a3fb24114205c3, type: 3}
+  brickDestroyedClip: {fileID: 8300000, guid: db9538e46022943ec9f53de0d6c58495, type: 3}
+  winMenuClip: {fileID: 8300000, guid: e44b833d1a6c040b481b0bc339388d86, type: 3}
+  loseMenuClip: {fileID: 8300000, guid: 0c26951396cc743c8b2bd93b70dfee01, type: 3}

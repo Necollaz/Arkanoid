@@ -6,26 +6,31 @@ namespace MiniIT.ARKANOID
     [RequireComponent(typeof(ParticleSystem))]
     public class BrickDestroyEffectView : MonoBehaviour
     {
-        private Action<BrickDestroyEffectView>  _returnToPool;
+        private Action<BrickDestroyEffectView>  returnToPool;
     
-        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private ParticleSystem particleSystem;
 
         private void Awake()
         {
-            _particleSystem = GetComponent<ParticleSystem>();
+            particleSystem = GetComponent<ParticleSystem>();
         }
 
         private void Update()
         {
-            if (_particleSystem == null)
+            if (particleSystem == null)
             {
                 return;
             }
 
-            if (!_particleSystem.IsAlive(true))
+            if (!particleSystem.IsAlive(true))
             {
-                _returnToPool?.Invoke(this);
+                returnToPool?.Invoke(this);
             }
+        }
+        
+        public void Initialize(Action<BrickDestroyEffectView> returnToPool)
+        {
+            this.returnToPool = returnToPool;
         }
     
         public void TryPlay(Vector3 position)
@@ -33,13 +38,13 @@ namespace MiniIT.ARKANOID
             transform.position = position;
             gameObject.SetActive(true);
 
-            if (_particleSystem == null)
+            if (particleSystem == null)
             {
                 return;
             }
 
-            _particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            _particleSystem.Play(true);
+            particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            particleSystem.Play(true);
         }
     }
 }

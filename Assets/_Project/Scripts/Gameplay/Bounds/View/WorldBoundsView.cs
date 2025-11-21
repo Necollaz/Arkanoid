@@ -5,17 +5,43 @@ namespace MiniIT.ARKANOID
 {
     public class WorldBoundsView : MonoBehaviour
     {
-        private WorldBounds _worldBounds;
+        private WorldBounds worldBounds;
+        private Camera      mainCamera;
+        private float       lastAspect;
 
         [Inject]
-        private void Construct(WorldBounds worldBounds)
+        private void Construct(
+            WorldBounds worldBounds,
+            Camera mainCamera)
         {
-            _worldBounds = worldBounds;
+            this.worldBounds = worldBounds;
+            this.mainCamera = mainCamera;
         }
 
         private void Start()
         {
-            _worldBounds?.ForceUpdate();
+            if (mainCamera != null)
+            {
+                lastAspect = mainCamera.aspect;
+            }
+            
+            worldBounds?.ForceUpdate();
+        }
+        
+        private void Update()
+        {
+            if (mainCamera == null)
+            {
+                return;
+            }
+
+            float currentAspect = mainCamera.aspect;
+
+            if (!Mathf.Approximately(currentAspect, lastAspect))
+            {
+                lastAspect = currentAspect;
+                worldBounds.ForceUpdate();
+            }
         }
     }
 }

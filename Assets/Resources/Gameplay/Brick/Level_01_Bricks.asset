@@ -12,138 +12,138 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7e605943814a37af0d780d927491af, type: 3}
   m_Name: Level_01_Bricks
   m_EditorClassIdentifier: 
-  _rows: 6
-  _columns: 10
-  _cellSize: {x: 0.6, y: 0.3}
-  _gridOffsetFromCenter: {x: 0, y: 2}
-  _indestructibleBrickConfig: {fileID: 11400000, guid: 65f88a8ff2628b74b81185c4fce1fe59, type: 2}
-  _normalBrickConfig: {fileID: 11400000, guid: 12680b24203280d429f7365ce9df37a8, type: 2}
-  _strongBrickConfig: {fileID: 11400000, guid: 7f1b1c8c504a293438072fe516fb70ae, type: 2}
-  _layoutMode: 1
-  _indestructibleBrickPositions:
-  - _rowIndex: 6
-    _columnIndex: 8
-  - _rowIndex: 2
-    _columnIndex: 10
-  - _rowIndex: 5
-    _columnIndex: 9
-  - _rowIndex: 1
-    _columnIndex: 6
-  - _rowIndex: 1
-    _columnIndex: 4
-  - _rowIndex: 6
-    _columnIndex: 4
-  - _rowIndex: 3
-    _columnIndex: 7
-  - _rowIndex: 4
-    _columnIndex: 2
-  - _rowIndex: 6
-    _columnIndex: 10
-  - _rowIndex: 3
-    _columnIndex: 1
-  _normalBrickPositions:
-  - _rowIndex: 5
-    _columnIndex: 2
-  - _rowIndex: 6
-    _columnIndex: 9
-  - _rowIndex: 4
-    _columnIndex: 10
-  - _rowIndex: 6
-    _columnIndex: 5
-  - _rowIndex: 1
-    _columnIndex: 8
-  - _rowIndex: 1
-    _columnIndex: 7
-  - _rowIndex: 4
-    _columnIndex: 6
-  - _rowIndex: 3
-    _columnIndex: 8
-  - _rowIndex: 6
-    _columnIndex: 7
-  - _rowIndex: 1
-    _columnIndex: 5
-  - _rowIndex: 5
-    _columnIndex: 10
-  - _rowIndex: 2
-    _columnIndex: 5
-  - _rowIndex: 3
-    _columnIndex: 10
-  - _rowIndex: 6
-    _columnIndex: 2
-  - _rowIndex: 6
-    _columnIndex: 1
-  - _rowIndex: 2
-    _columnIndex: 6
-  - _rowIndex: 4
-    _columnIndex: 8
-  - _rowIndex: 4
-    _columnIndex: 3
-  - _rowIndex: 1
-    _columnIndex: 1
-  - _rowIndex: 3
-    _columnIndex: 6
-  - _rowIndex: 2
-    _columnIndex: 2
-  - _rowIndex: 3
-    _columnIndex: 9
-  - _rowIndex: 5
-    _columnIndex: 6
-  - _rowIndex: 2
-    _columnIndex: 9
-  - _rowIndex: 1
-    _columnIndex: 3
-  - _rowIndex: 3
-    _columnIndex: 3
-  - _rowIndex: 2
-    _columnIndex: 3
-  - _rowIndex: 2
-    _columnIndex: 8
-  - _rowIndex: 1
-    _columnIndex: 10
-  _strongBrickPositions:
-  - _rowIndex: 4
-    _columnIndex: 4
-  - _rowIndex: 5
-    _columnIndex: 1
-  - _rowIndex: 4
-    _columnIndex: 1
-  - _rowIndex: 2
-    _columnIndex: 4
-  - _rowIndex: 2
-    _columnIndex: 1
-  - _rowIndex: 5
-    _columnIndex: 4
-  - _rowIndex: 5
-    _columnIndex: 7
-  - _rowIndex: 5
-    _columnIndex: 5
-  - _rowIndex: 5
-    _columnIndex: 8
-  - _rowIndex: 6
-    _columnIndex: 3
-  - _rowIndex: 3
-    _columnIndex: 4
-  - _rowIndex: 1
-    _columnIndex: 9
-  - _rowIndex: 4
-    _columnIndex: 5
-  - _rowIndex: 4
-    _columnIndex: 7
-  - _rowIndex: 2
-    _columnIndex: 7
-  - _rowIndex: 1
-    _columnIndex: 2
-  - _rowIndex: 4
-    _columnIndex: 9
-  - _rowIndex: 3
-    _columnIndex: 2
-  - _rowIndex: 3
-    _columnIndex: 5
-  - _rowIndex: 5
-    _columnIndex: 3
-  - _rowIndex: 6
-    _columnIndex: 6
-  _randomIndestructibleCount: 10
-  _randomNormalCount: 29
-  _randomStrongCount: 21
-  _randomSeed: 0
+  rows: 6
+  columns: 10
+  cellSize: {x: 0.6, y: 0.3}
+  gridOffsetFromCenter: {x: 0, y: 2}
+  indestructibleBrickConfig: {fileID: 11400000, guid: 65f88a8ff2628b74b81185c4fce1fe59, type: 2}
+  normalBrickConfig: {fileID: 11400000, guid: 12680b24203280d429f7365ce9df37a8, type: 2}
+  strongBrickConfig: {fileID: 11400000, guid: 7f1b1c8c504a293438072fe516fb70ae, type: 2}
+  layoutMode: 1
+  indestructibleBrickPositions:
+  - rowIndex: 4
+    columnIndex: 4
+  - rowIndex: 5
+    columnIndex: 10
+  - rowIndex: 4
+    columnIndex: 2
+  - rowIndex: 3
+    columnIndex: 9
+  - rowIndex: 1
+    columnIndex: 8
+  - rowIndex: 2
+    columnIndex: 3
+  - rowIndex: 4
+    columnIndex: 8
+  - rowIndex: 1
+    columnIndex: 6
+  - rowIndex: 1
+    columnIndex: 4
+  - rowIndex: 2
+    columnIndex: 6
+  normalBrickPositions:
+  - rowIndex: 5
+    columnIndex: 6
+  - rowIndex: 6
+    columnIndex: 7
+  - rowIndex: 6
+    columnIndex: 10
+  - rowIndex: 5
+    columnIndex: 7
+  - rowIndex: 3
+    columnIndex: 3
+  - rowIndex: 6
+    columnIndex: 6
+  - rowIndex: 2
+    columnIndex: 8
+  - rowIndex: 5
+    columnIndex: 3
+  - rowIndex: 5
+    columnIndex: 4
+  - rowIndex: 5
+    columnIndex: 9
+  - rowIndex: 1
+    columnIndex: 7
+  - rowIndex: 2
+    columnIndex: 1
+  - rowIndex: 6
+    columnIndex: 9
+  - rowIndex: 4
+    columnIndex: 10
+  - rowIndex: 3
+    columnIndex: 7
+  - rowIndex: 2
+    columnIndex: 7
+  - rowIndex: 1
+    columnIndex: 3
+  - rowIndex: 2
+    columnIndex: 2
+  - rowIndex: 6
+    columnIndex: 3
+  - rowIndex: 4
+    columnIndex: 9
+  - rowIndex: 1
+    columnIndex: 5
+  - rowIndex: 1
+    columnIndex: 10
+  - rowIndex: 6
+    columnIndex: 1
+  - rowIndex: 1
+    columnIndex: 2
+  - rowIndex: 1
+    columnIndex: 1
+  - rowIndex: 3
+    columnIndex: 2
+  - rowIndex: 3
+    columnIndex: 1
+  - rowIndex: 6
+    columnIndex: 2
+  - rowIndex: 3
+    columnIndex: 6
+  strongBrickPositions:
+  - rowIndex: 4
+    columnIndex: 3
+  - rowIndex: 3
+    columnIndex: 4
+  - rowIndex: 3
+    columnIndex: 10
+  - rowIndex: 6
+    columnIndex: 5
+  - rowIndex: 2
+    columnIndex: 10
+  - rowIndex: 6
+    columnIndex: 8
+  - rowIndex: 3
+    columnIndex: 5
+  - rowIndex: 5
+    columnIndex: 8
+  - rowIndex: 6
+    columnIndex: 4
+  - rowIndex: 2
+    columnIndex: 4
+  - rowIndex: 5
+    columnIndex: 5
+  - rowIndex: 4
+    columnIndex: 5
+  - rowIndex: 4
+    columnIndex: 6
+  - rowIndex: 2
+    columnIndex: 9
+  - rowIndex: 3
+    columnIndex: 8
+  - rowIndex: 4
+    columnIndex: 7
+  - rowIndex: 1
+    columnIndex: 9
+  - rowIndex: 5
+    columnIndex: 2
+  - rowIndex: 2
+    columnIndex: 5
+  - rowIndex: 4
+    columnIndex: 1
+  - rowIndex: 5
+    columnIndex: 1
+  randomIndestructibleCount: 10
+  randomNormalCount: 29
+  randomStrongCount: 21
+  randomSeed: 0

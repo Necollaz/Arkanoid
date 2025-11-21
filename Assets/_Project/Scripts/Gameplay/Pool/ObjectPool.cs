@@ -5,15 +5,15 @@ namespace MiniIT.ARKANOID
 {
     public class ObjectPool<T> where T : Component
     {
-        private readonly T         _prefab;
-        private readonly Transform _parentTransform;
-        private readonly Stack<T>  _pool;
+        private readonly T         prefab;
+        private readonly Transform parentTransform;
+        private readonly Stack<T>  pool;
     
         public ObjectPool(T prefab, Transform parentTransform, int initialSize)
         {
-            _prefab = prefab;
-            _parentTransform = parentTransform;
-            _pool = new Stack<T>(initialSize);
+            this.prefab = prefab;
+            this.parentTransform = parentTransform;
+            pool = new Stack<T>(initialSize);
     
             for (int i = 0; i < initialSize; i++)
             {
@@ -24,9 +24,9 @@ namespace MiniIT.ARKANOID
     
         public T Get()
         {
-            if (_pool.Count > 0)
+            if (pool.Count > 0)
             {
-                T instance = _pool.Pop();
+                T instance = pool.Pop();
                 instance.gameObject.SetActive(true);
                 
                 return instance;
@@ -43,13 +43,13 @@ namespace MiniIT.ARKANOID
             }
     
             instance.gameObject.SetActive(false);
-            instance.transform.SetParent(_parentTransform, false);
-            _pool.Push(instance);
+            instance.transform.SetParent(parentTransform, false);
+            pool.Push(instance);
         }
     
         private T Create()
         {
-            T instance = Object.Instantiate(_prefab, _parentTransform);
+            T instance = Object.Instantiate(prefab, parentTransform);
             instance.gameObject.SetActive(false);
     
             return instance;

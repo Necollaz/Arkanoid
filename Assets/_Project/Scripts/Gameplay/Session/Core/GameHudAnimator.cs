@@ -11,8 +11,8 @@ namespace MiniIT.ARKANOID
         private const float TILT_ANGLE = 8.0f;
         private const float TILT_DURATION = 0.1f;
         
-        private Tween       _winWindowTween;
-        private Tween       _loseWindowTween;
+        private Tween       winWindowTween;
+        private Tween       loseWindowTween;
     
         public void PlayWinWindow(RectTransform target)
         {
@@ -21,8 +21,8 @@ namespace MiniIT.ARKANOID
                 return;
             }
     
-            _winWindowTween?.Kill();
-            _winWindowTween = PlayWindowShowAnimation(target);
+            winWindowTween?.Kill();
+            winWindowTween = PlayWindowShowAnimation(target);
         }
     
         public void PlayLoseWindow(RectTransform target)
@@ -32,17 +32,17 @@ namespace MiniIT.ARKANOID
                 return;
             }
     
-            _loseWindowTween?.Kill();
-            _loseWindowTween = PlayWindowShowAnimation(target);
+            loseWindowTween?.Kill();
+            loseWindowTween = PlayWindowShowAnimation(target);
         }
     
         public void KillAllTweens()
         {
-            _winWindowTween?.Kill();
-            _loseWindowTween?.Kill();
+            winWindowTween?.Kill();
+            loseWindowTween?.Kill();
     
-            _winWindowTween = null;
-            _loseWindowTween = null;
+            winWindowTween = null;
+            loseWindowTween = null;
         }
     
         private Tween PlayWindowShowAnimation(RectTransform target)

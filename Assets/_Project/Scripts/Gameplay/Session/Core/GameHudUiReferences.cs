@@ -5,8 +5,14 @@ namespace MiniIT.ARKANOID
 {
     public class GameHudUiReferences
     {
-        public GameHudUiReferences(TextMeshProUGUI scoreText, Image winWindow, TextMeshProUGUI winScoreText,
-            Button winRestartButton, Image loseWindow, TextMeshProUGUI loseScoreText, Button loseRestartButton)
+        public GameHudUiReferences(
+            TextMeshProUGUI scoreText,
+            Image winWindow,
+            TextMeshProUGUI winScoreText,
+            Button winRestartButton,
+            Image loseWindow,
+            TextMeshProUGUI loseScoreText,
+            Button loseRestartButton)
         {
             ScoreText = scoreText;
             WinWindow = winWindow;

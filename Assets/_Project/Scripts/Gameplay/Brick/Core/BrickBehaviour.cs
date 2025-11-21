@@ -2,44 +2,44 @@ namespace MiniIT.ARKANOID
 {
     public class BrickBehaviour
     {
-        private readonly BrickConfig   _config;
-        private readonly BrickView     _view;
-        private readonly GameSession   _gameSession;
-        private readonly GameplayAudio _gameplayAudio;
+        private readonly BrickConfig   config;
+        private readonly BrickView     view;
+        private readonly GameSession   gameSession;
+        private readonly GameplayAudio gameplayAudio;
     
-        private int                    _currentHitPoints;
+        private int                    currentHitPoints;
 
         public BrickBehaviour(BrickConfig config, BrickView view, GameSession gameSession, GameplayAudio gameplayAudio)
         {
-            _config = config;
-            _view = view;
-            _gameSession = gameSession;
-            _gameplayAudio = gameplayAudio;
+            this.config = config;
+            this.view = view;
+            this.gameSession = gameSession;
+            this.gameplayAudio = gameplayAudio;
         
-            _currentHitPoints = config.IsIndestructible ? int.MaxValue : _config.HitPoints;
+            currentHitPoints = config.IsIndestructible ? int.MaxValue : this.config.HitPoints;
         
-            _view.ApplyVisual(_config);
+            this.view.ApplyVisual(this.config);
         }
 
         public void Hit()
         {
-            if (_config.IsIndestructible)
+            if (config.IsIndestructible)
             {
                 return;
             }
 
-            _currentHitPoints--;
+            currentHitPoints--;
 
-            if (_currentHitPoints > 0)
+            if (currentHitPoints > 0)
             {
-                _view.PlayHitShake();
+                view.PlayHitShake();
             
                 return;
             }
 
-            _gameplayAudio.PlayBrickDestroyed();
-            _gameSession.OnBrickDestroyed(_config.ScoreReward);
-            _view.PlayDestroySequence();
+            gameplayAudio.PlayBrickDestroyed();
+            gameSession.OnBrickDestroyed(config.ScoreReward);
+            view.PlayDestroySequence();
         }
     }
 }

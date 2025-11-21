@@ -8,12 +8,12 @@ namespace MiniIT.ARKANOID
         public event Action      LevelCompleted;
         public event Action      LevelFailed;
     
-        private int              _score;
-        private int              _remainingDestructibleBricks;
-        private bool             _isGameOver;
+        private int              score;
+        private int              remainingDestructibleBricks;
+        private bool             isGameOver;
     
-        public int Score => _score;
-        public bool IsGameOver => _isGameOver;
+        public int Score => score;
+        public bool IsGameOver => isGameOver;
     
         public void RegisterBrick(BrickConfig brickConfig)
         {
@@ -24,37 +24,37 @@ namespace MiniIT.ARKANOID
     
             if (!brickConfig.IsIndestructible)
             {
-                _remainingDestructibleBricks++;
+                remainingDestructibleBricks++;
             }
         }
         
         public void Reset()
         {
-            _score = 0;
-            _remainingDestructibleBricks = 0;
-            _isGameOver = false;
+            score = 0;
+            remainingDestructibleBricks = 0;
+            isGameOver = false;
         }
     
         public void OnBrickDestroyed(int scoreReward)
         {
-            if (_isGameOver)
+            if (isGameOver)
             {
                 return;
             }
     
-            _score += scoreReward;
+            score += scoreReward;
             
-            ScoreChanged?.Invoke(_score);
+            ScoreChanged?.Invoke(score);
     
-            if (_remainingDestructibleBricks > 0)
+            if (remainingDestructibleBricks > 0)
             {
-                _remainingDestructibleBricks--;
+                remainingDestructibleBricks--;
             }
     
-            if (_remainingDestructibleBricks <= 0)
+            if (remainingDestructibleBricks <= 0)
             {
-                _remainingDestructibleBricks = 0;
-                _isGameOver = true;
+                remainingDestructibleBricks = 0;
+                isGameOver = true;
                 
                 LevelCompleted?.Invoke();
             }
@@ -62,12 +62,12 @@ namespace MiniIT.ARKANOID
     
         public void OnBallLost()
         {
-            if (_isGameOver)
+            if (isGameOver)
             {
                 return;
             }
     
-            _isGameOver = true;
+            isGameOver = true;
             
             LevelFailed?.Invoke();
         }

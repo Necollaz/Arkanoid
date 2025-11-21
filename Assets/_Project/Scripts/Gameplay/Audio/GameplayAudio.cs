@@ -4,48 +4,48 @@ namespace MiniIT.ARKANOID
 {
     public class GameplayAudio
     {
-        private readonly GameplayAudioConfig _config;
-        private readonly AudioSource         _audioSource;
+        private readonly GameplayAudioConfig config;
+        private readonly AudioSource         audioSource;
 
         public GameplayAudio(AudioSource audioSource, GameplayAudioConfig config)
         {
-            _audioSource = audioSource;
-            _config = config;
+            this.audioSource = audioSource;
+            this.config = config;
         }
 
         public void PlayBallHitBrick()
         {
-            PlayOneShot(_config.BallHitBrickClip);
+            PlayOneShot(config.BallHitBrickClip);
         }
 
         public void PlayBallHitWallOrPlatform()
         {
-            PlayOneShot(_config.BallHitWallOrPlatformClip);
+            PlayOneShot(config.BallHitWallOrPlatformClip);
         }
 
         public void PlayBrickDestroyed()
         {
-            PlayOneShot(_config.BrickDestroyedClip);
+            PlayOneShot(config.BrickDestroyedClip);
         }
 
         public void PlayWinMenu()
         {
-            PlayOneShot(_config.WinMenuClip);
+            PlayOneShot(config.WinMenuClip);
         }
 
         public void PlayLoseMenu()
         {
-            PlayOneShot(_config.LoseMenuClip);
+            PlayOneShot(config.LoseMenuClip);
         }
     
         private void PlayOneShot(AudioClip clip)
         {
-            if (clip == null || _audioSource == null)
+            if (clip == null || audioSource == null)
             {
                 return;
             }
 
-            _audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip);
         }
     }
 }

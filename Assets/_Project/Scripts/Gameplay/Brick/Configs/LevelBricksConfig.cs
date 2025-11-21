@@ -7,67 +7,57 @@ namespace MiniIT.ARKANOID
     public class LevelBricksConfig : ScriptableObject
     {
         [Header("Grid")]
-        [SerializeField, Min(1)] private int             _rows = 6;
-        [SerializeField, Min(1)] private int             _columns = 10;
-        [SerializeField] private Vector2                 _cellSize = new Vector2(0.6f, 0.3f);
-        [SerializeField] private Vector2                 _gridOffsetFromCenter = Vector2.zero;
+        [SerializeField, Min(1)] private int             rows = 6;
+        [SerializeField, Min(1)] private int             columns = 10;
+        [SerializeField] private Vector2                 cellSize = new Vector2(0.6f, 0.3f);
+        [SerializeField] private Vector2                 gridOffsetFromCenter = Vector2.zero;
 
         [Header("Brick configs")]
-        [SerializeField] private BrickConfig             _indestructibleBrickConfig;
-        [SerializeField] private BrickConfig             _normalBrickConfig;
-        [SerializeField] private BrickConfig             _strongBrickConfig;
+        [SerializeField] private BrickConfig             indestructibleBrickConfig;
+        [SerializeField] private BrickConfig             normalBrickConfig;
+        [SerializeField] private BrickConfig             strongBrickConfig;
 
         [Header("Layout Mode")]
-        [SerializeField] private BrickLayoutModeType     _layoutMode = BrickLayoutModeType.Manual;
+        [SerializeField] private BrickLayoutModeType     layoutMode = BrickLayoutModeType.Manual;
 
         [Header("Bricks variants")]
-        [SerializeField] private List<BrickCellPosition> _indestructibleBrickPositions =
+        [SerializeField] private List<BrickCellPosition> indestructibleBrickPositions =
             new List<BrickCellPosition>();
-        [SerializeField] private List<BrickCellPosition> _normalBrickPositions =
+        [SerializeField] private List<BrickCellPosition> normalBrickPositions =
             new List<BrickCellPosition>();
-        [SerializeField] private List<BrickCellPosition> _strongBrickPositions =
+        [SerializeField] private List<BrickCellPosition> strongBrickPositions =
             new List<BrickCellPosition>();
 
         [Header("Random layout (editor only)")]
-        [SerializeField, Min(0)] private int             _randomIndestructibleCount = 0;
-        [SerializeField, Min(0)] private int             _randomNormalCount = 0;
-        [SerializeField, Min(0)] private int             _randomStrongCount = 0;
-        [SerializeField] private int                     _randomSeed = 0;
+        [SerializeField, Min(0)] private int             randomIndestructibleCount = 0;
+        [SerializeField, Min(0)] private int             randomNormalCount = 0;
+        [SerializeField, Min(0)] private int             randomStrongCount = 0;
+        [SerializeField] private int                     randomSeed = 0;
 
-        public Vector2 CellSize => _cellSize;
-        public Vector2 GridOffsetFromCenter => _gridOffsetFromCenter;
-        public int     Rows => _rows;
-        public int     Columns => _columns;
+        public Vector2 CellSize => cellSize;
+        public Vector2 GridOffsetFromCenter => gridOffsetFromCenter;
+        public int     Rows => rows;
+        public int     Columns => columns;
 
         public IEnumerable<BrickCell> EnumerateBrickCells()
         {
-            if (_indestructibleBrickConfig != null)
+            BrickSet[] sets =
             {
-                foreach (BrickCellPosition position in _indestructibleBrickPositions)
-                {
-                    if (TryCreateBrickCell(_indestructibleBrickConfig, position, out BrickCell cell))
-                    {
-                        yield return cell;
-                    }
-                }
-            }
+                new BrickSet(indestructibleBrickConfig, indestructibleBrickPositions),
+                new BrickSet(normalBrickConfig, normalBrickPositions),
+                new BrickSet(strongBrickConfig, strongBrickPositions)
+            };
 
-            if (_normalBrickConfig != null)
+            foreach (BrickSet set in sets)
             {
-                foreach (BrickCellPosition position in _normalBrickPositions)
+                if (set.Config == null)
                 {
-                    if (TryCreateBrickCell(_normalBrickConfig, position, out BrickCell cell))
-                    {
-                        yield return cell;
-                    }
+                    continue;
                 }
-            }
 
-            if (_strongBrickConfig != null)
-            {
-                foreach (BrickCellPosition position in _strongBrickPositions)
+                foreach (BrickCellPosition position in set.Positions)
                 {
-                    if (TryCreateBrickCell(_strongBrickConfig, position, out BrickCell cell))
+                    if (TryCreateBrickCell(set.Config, position, out BrickCell cell))
                     {
                         yield return cell;
                     }
@@ -80,7 +70,7 @@ namespace MiniIT.ARKANOID
             int rowIndex = position.RowIndex;
             int columnIndex = position.ColumnIndex;
 
-            if (rowIndex < 0 || rowIndex >= _rows || columnIndex < 0 || columnIndex >= _columns)
+            if (rowIndex < 0 || rowIndex >= rows || columnIndex < 0 || columnIndex >= columns)
             {
                 cell = null;
 

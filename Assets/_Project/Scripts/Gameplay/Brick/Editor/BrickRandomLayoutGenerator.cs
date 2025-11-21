@@ -5,16 +5,25 @@ using MiniIT.ARKANOID;
 
 public class BrickRandomLayoutGenerator
 {
-    private readonly BrickPositionListFiller _filler;
+    private readonly BrickPositionListFiller filler;
 
     public BrickRandomLayoutGenerator(BrickPositionListFiller filler)
     {
-        _filler = filler;
+        this.filler = filler;
     }
 
-    public void Generate(LevelBricksConfig config, int rows, int columns, int totalCells,
-        SerializedProperty indestructibleList, SerializedProperty normalList, SerializedProperty strongList,
-        int countInd, int countNormal, int countStrong, int seed)
+    public void Generate(
+        LevelBricksConfig config,
+        int rows,
+        int columns,
+        int totalCells,
+        SerializedProperty indestructibleList,
+        SerializedProperty normalList,
+        SerializedProperty strongList,
+        int countInd,
+        int countNormal,
+        int countStrong,
+        int seed)
     {
         List<BrickCellPosition> all = new List<BrickCellPosition>(totalCells);
 
@@ -40,9 +49,9 @@ public class BrickRandomLayoutGenerator
 
         int index = 0;
 
-        _filler.Fill(indestructibleList, all, ref index, countInd);
-        _filler.Fill(normalList, all, ref index, countNormal);
-        _filler.Fill(strongList, all, ref index, countStrong);
+        filler.Fill(indestructibleList, all, ref index, countInd);
+        filler.Fill(normalList, all, ref index, countNormal);
+        filler.Fill(strongList, all, ref index, countStrong);
 
         EditorUtility.SetDirty(config);
     }

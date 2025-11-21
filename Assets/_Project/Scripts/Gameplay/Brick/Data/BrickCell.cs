@@ -6,17 +6,17 @@ namespace MiniIT.ARKANOID
     [Serializable]
     public class BrickCell
     {
-        [SerializeField] private BrickConfig       _brickConfig;
-        [SerializeField] private BrickCellPosition _brickCellPosition;
+        [SerializeField] private BrickConfig       brickConfig;
+        [SerializeField] private BrickCellPosition brickCellPosition;
 
         public BrickCell(BrickConfig brickConfig, BrickCellPosition brickCellPosition)
         {
-            _brickConfig = brickConfig;
-            _brickCellPosition = brickCellPosition;
+            this.brickConfig = brickConfig;
+            this.brickCellPosition = brickCellPosition;
         }
     
-        public BrickConfig BrickConfig => _brickConfig;
-        public int         RowIndex => _brickCellPosition.RowIndex;
-        public int         ColumnIndex => _brickCellPosition.ColumnIndex;
+        public BrickConfig BrickConfig => brickConfig;
+        public int         RowIndex => brickCellPosition.RowIndex;
+        public int         ColumnIndex => brickCellPosition.ColumnIndex;
     }
 }

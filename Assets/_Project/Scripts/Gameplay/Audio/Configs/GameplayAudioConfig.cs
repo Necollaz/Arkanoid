@@ -6,20 +6,20 @@ namespace MiniIT.ARKANOID
     public class GameplayAudioConfig : ScriptableObject
     {
         [Header("Ball collisions")]
-        [SerializeField] private AudioClip _ballHitBrickClip;
-        [SerializeField] private AudioClip _ballHitWallOrPlatformClip;
+        [SerializeField] private AudioClip ballHitBrickClip;
+        [SerializeField] private AudioClip ballHitWallOrPlatformClip;
 
         [Header("Bricks")]
-        [SerializeField] private AudioClip _brickDestroyedClip;
+        [SerializeField] private AudioClip brickDestroyedClip;
 
         [Header("UI")]
-        [SerializeField] private AudioClip _winMenuClip;
-        [SerializeField] private AudioClip _loseMenuClip;
+        [SerializeField] private AudioClip winMenuClip;
+        [SerializeField] private AudioClip loseMenuClip;
 
-        public AudioClip BallHitBrickClip => _ballHitBrickClip;
-        public AudioClip BallHitWallOrPlatformClip => _ballHitWallOrPlatformClip;
-        public AudioClip BrickDestroyedClip => _brickDestroyedClip;
-        public AudioClip WinMenuClip => _winMenuClip;
-        public AudioClip LoseMenuClip => _loseMenuClip;
+        public AudioClip BallHitBrickClip => ballHitBrickClip;
+        public AudioClip BallHitWallOrPlatformClip => ballHitWallOrPlatformClip;
+        public AudioClip BrickDestroyedClip => brickDestroyedClip;
+        public AudioClip WinMenuClip => winMenuClip;
+        public AudioClip LoseMenuClip => loseMenuClip;
     }
 }

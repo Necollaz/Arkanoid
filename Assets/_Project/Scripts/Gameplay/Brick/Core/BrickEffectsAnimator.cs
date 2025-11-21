@@ -5,30 +5,36 @@ namespace MiniIT.ARKANOID
 {
     public class BrickEffectsAnimator
     {
-        private readonly BrickView                 _view;
-        private readonly Transform                 _transform;
-        private readonly BoxCollider2D             _boxCollider;
+        private const int                          HIT_SHAKE_VIBRATO = 10;
+        private const float                        HIT_SHAKE_DURATION = 0.15f;
+        private const float                        HIT_SHAKE_STRENGTH = 0.1f;
+        private const float                        HIT_SHAKE_RANDOMNESS = 90.0f;
+        private const float                        DESTROY_SCALE_DURATION = 0.2f;
+        
+        private readonly BrickView                 view;
+        private readonly Transform                 transform;
+        private readonly BoxCollider2D             boxCollider;
 
-        private ObjectPool<BrickView>              _brickPool;
-        private ObjectPool<BrickDestroyEffectView> _effectPool;
+        private ObjectPool<BrickView>              brickPool;
+        private ObjectPool<BrickDestroyEffectView> effectPool;
 
-        private Tween                              _currentTween;
-        private Vector3                            _originalLocalScale;
+        private Tween                              currentTween;
+        private Vector3                            originalLocalScale;
 
         public BrickEffectsAnimator(BrickView view, Transform transform, BoxCollider2D boxCollider)
         {
-            _view = view;
-            _transform = transform;
-            _boxCollider = boxCollider;
+            this.view = view;
+            this.transform = transform;
+            this.boxCollider = boxCollider;
 
-            _originalLocalScale = _transform.localScale;
+            originalLocalScale = this.transform.localScale;
         }
 
         public void Initialize(ObjectPool<BrickView> brickPool, ObjectPool<BrickDestroyEffectView> effectPool)
         {
-            _brickPool = brickPool;
-            _effectPool = effectPool;
-            _originalLocalScale = _transform.localScale;
+            this.brickPool = brickPool;
+            this.effectPool = effectPool;
+            originalLocalScale = transform.localScale;
         }
 
         public void OnDisable()
@@ -40,89 +46,100 @@ namespace MiniIT.ARKANOID
         {
             KillTween();
 
-            _transform.localScale = _originalLocalScale;
+            transform.localScale = originalLocalScale;
 
-            if (_boxCollider != null)
+            if (boxCollider != null)
             {
-                _boxCollider.enabled = true;
+                boxCollider.enabled = true;
             }
         }
 
         public void TryPlayHit()
         {
-            if (_transform == null || !_transform.gameObject.activeInHierarchy)
+            if (transform == null || !transform.gameObject.activeInHierarchy)
             {
                 return;
             }
 
             KillTween();
 
-            _currentTween = _transform
-                .DOShakePosition(0.15f, 0.1f, 10, 90.0f, false, false)
-                .SetLink(_transform.gameObject);
+            currentTween = transform.DOShakePosition(HIT_SHAKE_DURATION, HIT_SHAKE_STRENGTH, HIT_SHAKE_VIBRATO,
+                    HIT_SHAKE_RANDOMNESS, false, false).SetLink(transform.gameObject);
         }
 
         public void TryPlayDestroy()
         {
-            GameObject gameObject = _transform.gameObject;
+            GameObject gameObject = transform.gameObject;
 
             if (gameObject == null || !gameObject.activeInHierarchy)
             {
                 ReturnToPool();
+                
                 return;
             }
 
             KillTween();
 
-            if (_boxCollider != null)
+            if (boxCollider != null)
             {
-                _boxCollider.enabled = false;
+                boxCollider.enabled = false;
             }
 
-            if (_effectPool != null)
+            if (effectPool != null)
             {
-                BrickDestroyEffectView effect = _effectPool.Get();
+                BrickDestroyEffectView effect = effectPool.Get();
 
                 if (effect != null)
                 {
-                    effect.TryPlay(_transform.position);
+                    effect.Initialize(ReturnEffectToPool);
+                    effect.TryPlay(transform.position);
                 }
             }
 
-            _currentTween = _transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+            currentTween = transform.DOScale(Vector3.zero, DESTROY_SCALE_DURATION).SetEase(Ease.InBack)
                 .OnComplete(ReturnToPool).SetLink(gameObject);
+        }
+        
+        private void ReturnEffectToPool(BrickDestroyEffectView effect)
+        {
+            if (effect == null || effectPool == null)
+            {
+                return;
+            }
+
+            effectPool.Return(effect);
         }
 
         private void ReturnToPool()
         {
-            _transform.localScale = _originalLocalScale;
+            transform.localScale = originalLocalScale;
 
-            if (_boxCollider != null)
+            if (boxCollider != null)
             {
-                _boxCollider.enabled = true;
+                boxCollider.enabled = true;
             }
 
-            _currentTween = null;
+            currentTween = null;
 
-            if (_brickPool != null && _view != null)
+            if (brickPool != null && view != null)
             {
-                _brickPool.Return(_view);
+                brickPool.Return(view);
             }
-            else if (_transform != null)
+            else if (transform != null)
             {
-                _transform.gameObject.SetActive(false);
+                transform.gameObject.SetActive(false);
             }
         }
 
         private void KillTween()
         {
-            if (_currentTween == null)
+            if (currentTween == null)
             {
                 return;
             }
 
-            _currentTween.Kill();
-            _currentTween = null;
+            currentTween.Kill();
+            currentTween = null;
         }
     }
 }

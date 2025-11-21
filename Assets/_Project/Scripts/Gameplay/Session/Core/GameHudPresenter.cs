@@ -4,45 +4,45 @@ namespace MiniIT.ARKANOID
 {
     public class GameHudPresenter
     {
-        private readonly GameSession         _gameSession;
-        private readonly GameHudUiReferences _ui;
-        private readonly GameplayAudio       _gameplayAudio;
-        private readonly GameHudAnimator     _animator;
+        private readonly GameSession         gameSession;
+        private readonly GameHudUiReferences ui;
+        private readonly GameplayAudio       gameplayAudio;
+        private readonly GameHudAnimator     animator;
 
         public GameHudPresenter(GameSession gameSession, GameHudUiReferences ui, GameplayAudio gameplayAudio,
             GameHudAnimator animator)
         {
-            _gameSession = gameSession;
-            _ui = ui;
-            _gameplayAudio = gameplayAudio;
-            _animator = animator;
+            this.gameSession = gameSession;
+            this.ui = ui;
+            this.gameplayAudio = gameplayAudio;
+            this.animator = animator;
         }
 
         public void Initialize()
         {
             SetScoreText(0);
 
-            _ui.WinWindow.gameObject.SetActive(false);
-            _ui.LoseWindow.gameObject.SetActive(false);
+            ui.WinWindow.gameObject.SetActive(false);
+            ui.LoseWindow.gameObject.SetActive(false);
 
-            _ui.WinRestartButton.onClick.AddListener(RestartLevel);
-            _ui.LoseRestartButton.onClick.AddListener(RestartLevel);
+            ui.WinRestartButton.onClick.AddListener(RestartLevel);
+            ui.LoseRestartButton.onClick.AddListener(RestartLevel);
         }
 
         public void Subscribe()
         {
-            _gameSession.ScoreChanged += HandleScoreChanged;
-            _gameSession.LevelCompleted += HandleGameWon;
-            _gameSession.LevelFailed += HandleGameLost;
+            gameSession.ScoreChanged += HandleScoreChanged;
+            gameSession.LevelCompleted += HandleGameWon;
+            gameSession.LevelFailed += HandleGameLost;
         }
 
         public void Unsubscribe()
         {
-            _gameSession.ScoreChanged -= HandleScoreChanged;
-            _gameSession.LevelCompleted -= HandleGameWon;
-            _gameSession.LevelFailed -= HandleGameLost;
+            gameSession.ScoreChanged -= HandleScoreChanged;
+            gameSession.LevelCompleted -= HandleGameWon;
+            gameSession.LevelFailed -= HandleGameLost;
 
-            _animator.KillAllTweens();
+            animator.KillAllTweens();
         }
 
         private void HandleScoreChanged(int score)
@@ -52,25 +52,25 @@ namespace MiniIT.ARKANOID
 
         private void HandleGameWon()
         {
-            _ui.WinWindow.gameObject.SetActive(true);
-            _ui.WinScoreText.text = $"Score: {_gameSession.Score}";
-            _gameplayAudio.PlayWinMenu();
+            ui.WinWindow.gameObject.SetActive(true);
+            ui.WinScoreText.text = $"Score: {gameSession.Score}";
+            gameplayAudio.PlayWinMenu();
 
-            _animator.PlayWinWindow(_ui.WinWindow.rectTransform);
+            animator.PlayWinWindow(ui.WinWindow.rectTransform);
         }
 
         private void HandleGameLost()
         {
-            _ui.LoseWindow.gameObject.SetActive(true);
-            _ui.LoseScoreText.text = $"Score: {_gameSession.Score}";
-            _gameplayAudio.PlayLoseMenu();
+            ui.LoseWindow.gameObject.SetActive(true);
+            ui.LoseScoreText.text = $"Score: {gameSession.Score}";
+            gameplayAudio.PlayLoseMenu();
 
-            _animator.PlayLoseWindow(_ui.LoseWindow.rectTransform);
+            animator.PlayLoseWindow(ui.LoseWindow.rectTransform);
         }
 
         private void SetScoreText(int score)
         {
-            _ui.ScoreText.text = score.ToString();
+            ui.ScoreText.text = score.ToString();
         }
 
         private void RestartLevel()

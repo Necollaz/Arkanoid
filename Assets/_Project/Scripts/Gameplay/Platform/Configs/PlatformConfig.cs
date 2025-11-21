@@ -6,16 +6,16 @@ namespace MiniIT.ARKANOID
     public class PlatformConfig : ScriptableObject
     {
         [Header("Horizontal padding")]
-        [SerializeField] private float                    _screenPadding = 0.0f;
+        [SerializeField] private float                    screenPadding = 0.0f;
 
         [Header("Vertical position")]
-        [SerializeField, Range(0.0f, 1.0f)] private float _verticalViewportPosition = 0.1f;
+        [SerializeField, Range(0.0f, 1.0f)] private float verticalViewportPosition = 0.1f;
 
         [Header("Input")]
-        [SerializeField, Range(0.0f, 1.0f)] private float _defaultNormalizedPosition = 0.5f;
+        [SerializeField, Range(0.0f, 1.0f)] private float defaultNormalizedPosition = 0.5f;
     
-        public float ScreenPadding => _screenPadding;
-        public float VerticalViewportPosition => _verticalViewportPosition;
-        public float DefaultNormalizedPosition => _defaultNormalizedPosition;
+        public float ScreenPadding => screenPadding;
+        public float VerticalViewportPosition => verticalViewportPosition;
+        public float DefaultNormalizedPosition => defaultNormalizedPosition;
     }
 }

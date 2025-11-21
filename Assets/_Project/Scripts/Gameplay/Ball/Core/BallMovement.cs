@@ -4,74 +4,80 @@ namespace MiniIT.ARKANOID
 {
     public class BallMovement
     {
-        private readonly GameSession _gameSession;
-        private readonly BallConfig  _config;
-        private readonly BallState   _state;
-        private readonly BallBody    _body;
-        private readonly BallPhysics _physics;
+        private readonly GameSession gameSession;
+        private readonly BallConfig  config;
+        private readonly BallState   state;
+        private readonly BallBody    body;
+        private readonly BallPhysics physics;
         
-        private readonly Collider2D  _bottomLoseTrigger;
+        private readonly Collider2D  bottomLoseTrigger;
     
-        public BallMovement(Rigidbody2D rigidbody, CircleCollider2D ballCollider, Collider2D bottomLoseTrigger,
-            Transform spawnPoint, BallConfig config, GameSession gameSession, GameplayAudio gameplayAudio)
+        public BallMovement(
+            Rigidbody2D rigidbody,
+            CircleCollider2D ballCollider,
+            Collider2D bottomLoseTrigger,
+            Transform spawnPoint,
+            BallConfig config,
+            GameSession gameSession,
+            GameplayAudio gameplayAudio)
         {
-            _config = config;
-            _gameSession = gameSession;
-            _bottomLoseTrigger = bottomLoseTrigger;
+            this.config = config;
+            this.gameSession = gameSession;
+            this.bottomLoseTrigger = bottomLoseTrigger;
     
-            _state = new BallState(_config);
-            _body = new BallBody(rigidbody, ballCollider, spawnPoint);
-            _physics = new BallPhysics(_config, _state, _body, _gameSession, gameplayAudio);
+            state = new BallState(this.config);
+            body = new BallBody(rigidbody, ballCollider, spawnPoint);
+            physics = new BallPhysics(this.config, state, body, this.gameSession, gameplayAudio);
     
-            _state.Reset();
-            _body.MoveToSpawnPoint();
+            state.Reset();
+            body.MoveToSpawnPoint();
     
-            _gameSession.LevelCompleted += OnLevelCompleted;
+            this.gameSession.LevelCompleted += OnLevelCompleted;
         }
     
         public void OnTriggerEnter(Collider2D other)
         {
-            if (other != _bottomLoseTrigger || _gameSession.IsGameOver)
+            if (other != bottomLoseTrigger || gameSession.IsGameOver)
             {
                 return;
             }
     
-            _state.Stop();
-            _body.MoveToSpawnPoint();
-            _gameSession.OnBallLost();
+            state.Stop();
+            body.MoveToSpawnPoint();
+            gameSession.OnBallLost();
         }
         
         public void FixedTick(float deltaTime)
         {
-            if (!_state.IsLaunched || _gameSession.IsGameOver)
+            if (!state.IsLaunched || gameSession.IsGameOver)
             {
-                _body.FollowSpawnPoint();
+                body.FollowSpawnPoint();
                 
                 return;
             }
     
-            _physics.SimulateStep(deltaTime);
+            physics.SimulateStep(deltaTime);
         }
     
         public void Launch()
         {
-            if (_gameSession.IsGameOver)
+            if (gameSession.IsGameOver)
             {
                 return;
             }
     
-            if (_state.IsLaunched)
+            if (state.IsLaunched)
             {
                 return;
             }
     
-            _state.Launch();
+            state.Launch();
         }
     
         private void OnLevelCompleted()
         {
-            _state.Stop();
-            _body.MoveToSpawnPoint();
+            state.Stop();
+            body.MoveToSpawnPoint();
         }
     }
 }

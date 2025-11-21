@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2381297d48746cea5c01c3b02feaa40, type: 3}
   m_Name: BallConfig
   m_EditorClassIdentifier: 
-  _collisionMask:
+  collisionMask:
     serializedVersion: 2
     m_Bits: 896
-  _ballSpeed: 10
-  _minVerticalNormal: 0.2
-  _launchHorizontalRandomRange: 0.6
-  _launchVerticalDirection: 1
-  _platformHitMaxNormalizedX: 1
+  ballSpeed: 10
+  minVerticalNormal: 0.2
+  launchHorizontalRandomRange: 0.6
+  launchVerticalDirection: 1
+  platformHitMaxNormalizedX: 1

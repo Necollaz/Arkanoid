@@ -5,53 +5,53 @@ using MiniIT.ARKANOID;
 [CustomEditor(typeof(LevelBricksConfig))]
 public class LevelBricksConfigEditor : Editor
 {
-    private BrickPositionListFiller    _positionFiller;
-    private BrickRandomLayoutGenerator _layoutGenerator;
+    private BrickPositionListFiller    positionFiller;
+    private BrickRandomLayoutGenerator layoutGenerator;
     
-    private SerializedProperty         _rowsProperty;
-    private SerializedProperty         _columnsProperty;
-    private SerializedProperty         _cellSizeProperty;
-    private SerializedProperty         _gridOffsetProperty;
+    private SerializedProperty         rowsProperty;
+    private SerializedProperty         columnsProperty;
+    private SerializedProperty         cellSizeProperty;
+    private SerializedProperty         gridOffsetProperty;
 
-    private SerializedProperty         _indestructibleConfigProperty;
-    private SerializedProperty         _normalConfigProperty;
-    private SerializedProperty         _strongConfigProperty;
+    private SerializedProperty         indestructibleConfigProperty;
+    private SerializedProperty         normalConfigProperty;
+    private SerializedProperty         strongConfigProperty;
 
-    private SerializedProperty         _layoutModeProperty;
+    private SerializedProperty         layoutModeProperty;
 
-    private SerializedProperty         _indestructiblePositionsProperty;
-    private SerializedProperty         _normalPositionsProperty;
-    private SerializedProperty         _strongPositionsProperty;
+    private SerializedProperty         indestructiblePositionsProperty;
+    private SerializedProperty         normalPositionsProperty;
+    private SerializedProperty         strongPositionsProperty;
 
-    private SerializedProperty         _randomIndCountProperty;
-    private SerializedProperty         _randomNormalCountProperty;
-    private SerializedProperty         _randomStrongCountProperty;
-    private SerializedProperty         _randomSeedProperty;
+    private SerializedProperty         randomIndCountProperty;
+    private SerializedProperty         randomNormalCountProperty;
+    private SerializedProperty         randomStrongCountProperty;
+    private SerializedProperty         randomSeedProperty;
 
     private void OnEnable()
     {
-        _rowsProperty = serializedObject.FindProperty("_rows");
-        _columnsProperty = serializedObject.FindProperty("_columns");
-        _cellSizeProperty = serializedObject.FindProperty("_cellSize");
-        _gridOffsetProperty = serializedObject.FindProperty("_gridOffsetFromCenter");
+        rowsProperty = serializedObject.FindProperty("rows");
+        columnsProperty = serializedObject.FindProperty("columns");
+        cellSizeProperty = serializedObject.FindProperty("cellSize");
+        gridOffsetProperty = serializedObject.FindProperty("gridOffsetFromCenter");
 
-        _indestructibleConfigProperty = serializedObject.FindProperty("_indestructibleBrickConfig");
-        _normalConfigProperty = serializedObject.FindProperty("_normalBrickConfig");
-        _strongConfigProperty = serializedObject.FindProperty("_strongBrickConfig");
+        indestructibleConfigProperty = serializedObject.FindProperty("indestructibleBrickConfig");
+        normalConfigProperty = serializedObject.FindProperty("normalBrickConfig");
+        strongConfigProperty = serializedObject.FindProperty("strongBrickConfig");
 
-        _layoutModeProperty = serializedObject.FindProperty("_layoutMode");
+        layoutModeProperty = serializedObject.FindProperty("layoutMode");
 
-        _indestructiblePositionsProperty = serializedObject.FindProperty("_indestructibleBrickPositions");
-        _normalPositionsProperty = serializedObject.FindProperty("_normalBrickPositions");
-        _strongPositionsProperty = serializedObject.FindProperty("_strongBrickPositions");
+        indestructiblePositionsProperty = serializedObject.FindProperty("indestructibleBrickPositions");
+        normalPositionsProperty = serializedObject.FindProperty("normalBrickPositions");
+        strongPositionsProperty = serializedObject.FindProperty("strongBrickPositions");
 
-        _randomIndCountProperty = serializedObject.FindProperty("_randomIndestructibleCount");
-        _randomNormalCountProperty = serializedObject.FindProperty("_randomNormalCount");
-        _randomStrongCountProperty = serializedObject.FindProperty("_randomStrongCount");
-        _randomSeedProperty = serializedObject.FindProperty("_randomSeed");
+        randomIndCountProperty = serializedObject.FindProperty("randomIndestructibleCount");
+        randomNormalCountProperty = serializedObject.FindProperty("randomNormalCount");
+        randomStrongCountProperty = serializedObject.FindProperty("randomStrongCount");
+        randomSeedProperty = serializedObject.FindProperty("randomSeed");
         
-        _positionFiller = new BrickPositionListFiller();
-        _layoutGenerator = new BrickRandomLayoutGenerator(_positionFiller);
+        positionFiller = new BrickPositionListFiller();
+        layoutGenerator = new BrickRandomLayoutGenerator(positionFiller);
     }
 
     public override void OnInspectorGUI()
@@ -62,9 +62,9 @@ public class LevelBricksConfigEditor : Editor
         DrawBrickConfigsSection();
 
         EditorGUILayout.Space();
-        EditorGUILayout.PropertyField(_layoutModeProperty, new GUIContent(BrickEditorConstants.LABEL_LAYOUT_MODE));
+        EditorGUILayout.PropertyField(layoutModeProperty, new GUIContent(BrickEditorConstants.LABEL_LAYOUT_MODE));
 
-        BrickLayoutModeType mode = (BrickLayoutModeType)_layoutModeProperty.enumValueIndex;
+        BrickLayoutModeType mode = (BrickLayoutModeType)layoutModeProperty.enumValueIndex;
 
         EditorGUILayout.Space();
 
@@ -84,28 +84,28 @@ public class LevelBricksConfigEditor : Editor
     private void DrawGridSection()
     {
         EditorGUILayout.LabelField(BrickEditorConstants.LABEL_GRID, EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(_rowsProperty);
-        EditorGUILayout.PropertyField(_columnsProperty);
-        EditorGUILayout.PropertyField(_cellSizeProperty);
-        EditorGUILayout.PropertyField(_gridOffsetProperty);
+        EditorGUILayout.PropertyField(rowsProperty);
+        EditorGUILayout.PropertyField(columnsProperty);
+        EditorGUILayout.PropertyField(cellSizeProperty);
+        EditorGUILayout.PropertyField(gridOffsetProperty);
         EditorGUILayout.Space();
     }
 
     private void DrawBrickConfigsSection()
     {
         EditorGUILayout.LabelField(BrickEditorConstants.LABEL_BRICK_CONFIGS, EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(_indestructibleConfigProperty);
-        EditorGUILayout.PropertyField(_normalConfigProperty);
-        EditorGUILayout.PropertyField(_strongConfigProperty);
+        EditorGUILayout.PropertyField(indestructibleConfigProperty);
+        EditorGUILayout.PropertyField(normalConfigProperty);
+        EditorGUILayout.PropertyField(strongConfigProperty);
         EditorGUILayout.Space();
     }
 
     private void DrawManualLayout()
     {
         EditorGUILayout.LabelField(BrickEditorConstants.LABEL_MANUAL, EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(_indestructiblePositionsProperty, true);
-        EditorGUILayout.PropertyField(_normalPositionsProperty, true);
-        EditorGUILayout.PropertyField(_strongPositionsProperty, true);
+        EditorGUILayout.PropertyField(indestructiblePositionsProperty, true);
+        EditorGUILayout.PropertyField(normalPositionsProperty, true);
+        EditorGUILayout.PropertyField(strongPositionsProperty, true);
     }
 
 
@@ -113,8 +113,8 @@ public class LevelBricksConfigEditor : Editor
     {
         LevelBricksConfig config = (LevelBricksConfig)target;
 
-        int rows = Mathf.Max(1, _rowsProperty.intValue);
-        int columns = Mathf.Max(1, _columnsProperty.intValue);
+        int rows = Mathf.Max(1, rowsProperty.intValue);
+        int columns = Mathf.Max(1, columnsProperty.intValue);
         int totalCells = rows * columns;
 
         EditorGUILayout.LabelField(BrickEditorConstants.LABEL_RANDOM, EditorStyles.boldLabel);
@@ -122,12 +122,12 @@ public class LevelBricksConfigEditor : Editor
                                 "Сумма должна точно совпадать с количеством ячеек сетки (rows * columns).", 
             MessageType.Info);
         
-        ClampProperty(_randomIndCountProperty, totalCells);
-        ClampProperty(_randomNormalCountProperty, totalCells);
-        ClampProperty(_randomStrongCountProperty, totalCells);
+        ClampProperty(randomIndCountProperty, totalCells);
+        ClampProperty(randomNormalCountProperty, totalCells);
+        ClampProperty(randomStrongCountProperty, totalCells);
 
-        int totalBricks = _randomIndCountProperty.intValue + _randomNormalCountProperty.intValue +
-                          _randomStrongCountProperty.intValue;
+        int totalBricks = randomIndCountProperty.intValue + randomNormalCountProperty.intValue +
+                          randomStrongCountProperty.intValue;
         
         EditorGUILayout.LabelField($"Total bricks: {totalBricks} / {totalCells}", totalBricks == totalCells ?
             EditorStyles.label : EditorStyles.boldLabel);
@@ -142,21 +142,21 @@ public class LevelBricksConfigEditor : Editor
 
         EditorGUILayout.Space();
         
-        DrawSimpleSlider(_randomIndCountProperty, BrickEditorConstants.SLIDER_INDESTRUCTIBLE, totalCells);
-        DrawSimpleSlider(_randomNormalCountProperty, BrickEditorConstants.SLIDER_NORMAL, totalCells);
-        DrawSimpleSlider(_randomStrongCountProperty, BrickEditorConstants.SLIDER_STRONG, totalCells);
+        DrawSimpleSlider(randomIndCountProperty, BrickEditorConstants.SLIDER_INDESTRUCTIBLE, totalCells);
+        DrawSimpleSlider(randomNormalCountProperty, BrickEditorConstants.SLIDER_NORMAL, totalCells);
+        DrawSimpleSlider(randomStrongCountProperty, BrickEditorConstants.SLIDER_STRONG, totalCells);
 
         EditorGUILayout.Space();
-        EditorGUILayout.PropertyField(_randomSeedProperty, new GUIContent("Random Seed (0 = random)"));
+        EditorGUILayout.PropertyField(randomSeedProperty, new GUIContent("Random Seed (0 = random)"));
         EditorGUILayout.Space();
         
         EditorGUI.BeginDisabledGroup(totalBricks != totalCells);
         
         if (GUILayout.Button(BrickEditorConstants.BUTTON_GENERATE))
         {
-            _layoutGenerator.Generate(config, rows, columns, totalCells, _indestructiblePositionsProperty,
-                _normalPositionsProperty, _strongPositionsProperty, _randomIndCountProperty.intValue,
-                _randomNormalCountProperty.intValue, _randomStrongCountProperty.intValue, _randomSeedProperty.intValue);
+            layoutGenerator.Generate(config, rows, columns, totalCells, indestructiblePositionsProperty,
+                normalPositionsProperty, strongPositionsProperty, randomIndCountProperty.intValue,
+                randomNormalCountProperty.intValue, randomStrongCountProperty.intValue, randomSeedProperty.intValue);
         }
         
         EditorGUI.EndDisabledGroup();
